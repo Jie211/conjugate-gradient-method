@@ -1,4 +1,6 @@
-#include "header.h"
+/* #include "header.h" */
+#include "cgm.h"
+#include "function.h"
 
 void
 /* -------------------------------*/

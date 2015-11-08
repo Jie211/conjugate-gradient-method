@@ -1,5 +1,8 @@
-#include "header.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+#include "function.h"
+#include "cgm.h"
 int main(int argc, char const* argv[])
 {
   int N;
