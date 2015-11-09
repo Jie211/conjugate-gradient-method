@@ -65,10 +65,10 @@ if((p_his = fopen("./output/his.txt", "w")) == NULL)
   exit(0);
 }
 #endif
-/* #ifdef TIME */
+#ifdef TIME
   double st, et;
   st = gettimeofday_sec();
-/* #endif */
+#endif
   //
   //Setting initial values
   //
@@ -138,9 +138,9 @@ if((p_his = fopen("./output/his.txt", "w")) == NULL)
     }
     n++;
   }
-/* #ifdef TIME */
+#ifdef TIME
   et = gettimeofday_sec();
-/* #endif */
+#endif
   if(sqrt(r_norm_new)/sqrt(b_norm)<eps){
      printf("good\n");
    }else{
@@ -149,9 +149,9 @@ if((p_his = fopen("./output/his.txt", "w")) == NULL)
   printf("requset loop = %d\n",i_max);
   printf("run loop  = %d\n", n);
 
-/* #ifdef TIME */
+#ifdef TIME
   printf("ElapsedTime = %.6f ms = %.6f s\n", (et-st)*1000, (et-st));
-/* #endif */
+#endif
 #ifdef EBUG
   for(i = 0;i<ndata;i++)
   {
@@ -182,10 +182,11 @@ if((p_his = fopen("./output/his.txt", "w")) == NULL)
   }
   true_r = log10(sqrt(baxk_norm)/sqrt(bax0_norm));
   true_r2 = sqrt(baxk_norm);
-  printf("--result infomation--")
+  printf("\n--result infomation\n");
   printf("r_norm=%.12e\n", sqrt(r_norm_new)/sqrt(b_norm));
   printf("relative error=%.12e\n", true_r2);
-  printf("log(relative error)=%.12e\n", true_r);
+  printf("log(relative error)=%.12e\n\n", true_r);
+  printf("--output ResidualHistory and solution to ./output\n");
   fclose(p_x);
   fclose(p_his);
 #endif

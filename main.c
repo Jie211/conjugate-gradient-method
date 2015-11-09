@@ -21,16 +21,14 @@ int main(int argc, char const* argv[])
     printf("%s colval ptr bx maxloop thread\n", argv[0]);
     exit(0);
   }
-  printf("--OpenMP--\n");
+  printf("--set OpenMP\n");
 #ifdef EBUG
   printf("OpenMP Max Threads %d\n", omp_get_max_threads());
-  printf("OpenMP Threads set to %d\n", atoi(argv[5]));
+  printf("OpenMP Threads set to %d\n\n", atoi(argv[5]));
 #endif
   omp_set_num_threads(atoi(argv[5]));
-  printf("--OpenMP over--\n");
-  printf("--check error--\n");
+  printf("--check error\n");
 #ifdef EBUG
-  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
   printf("get headpart and check headerror\n");
 #endif
   gethead(argv[1],argv[2],argv[3],&N,&M); 
@@ -73,15 +71,12 @@ int main(int argc, char const* argv[])
 #endif
   getdata(argv[1],argv[2],argv[3],col,ptr,val,b,x,N,M);
 #ifdef EBUG
-  printf("read data over\n");
-  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+  printf("read data over\n\n");
 #endif
-  printf("--check error over--\n");
   int alpha=atoi(argv[4]);
   MAX = alpha;
   printf("--result--\n");
   cgm_CRS(val, col, ptr, b, x, N, 1e-10, MAX, M);
-
   free(b);
   free(x);
   free(val);
